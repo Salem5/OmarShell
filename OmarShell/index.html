@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Omar Shell v0.1</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" href="app.css" type="text/css" />
+    <script src="app.js"></script>
+
+    <script src="jquery-1.7.1.min.js"></script>
+    <script src="jquery.mousewheel-min.js"></script>
+    <script src="jquery.terminal-min.js"></script>
+
+    <script src="terminal-commands.js"></script>
+
+    <link href="jquery.terminal.css" rel="stylesheet" />
+</head>
+<body>
+    <script type="text/javascript">
+
+ 
+        jQuery(function ($, undefined) {
+            $('#OmarSite').terminal(function (command, term) // It should be possible to call the commandExecution function directly, but it doesn't work for some reason. I have to check this some other time.
+            {
+                commandExecution(command, term);
+            },
+
+             {
+                 greetings: thisIsGreet(undefined),
+                 //completion: getPossibleCOmmands(term)
+                 name: 'omar_rootsheel',
+                 prompt: 'Omar> ',
+                 onInit: function (term) {
+                     term.resize(); // Workaround because of strange behaviour with long texts in the greetings.
+                 },
+             }
+            );
+        });
+
+    </script>
+    <div id="OmarSite"></div>
+</body>
+</html>
